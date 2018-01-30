@@ -34,7 +34,7 @@ def to_naive_utc(datetime, record):
 
 
 def to_tz(datetime, tz_name):
-    tz = pytz.timezone(tz_name)
+    tz = pytz.timezone(tz_name) if tz_name else pytz.UTC
     return pytz.UTC.localize(datetime.replace(tzinfo=None), is_dst=False).astimezone(tz).replace(tzinfo=None)
 
 
@@ -722,7 +722,7 @@ class ResourceCalendarLeaves(models.Model):
     date_to = fields.Datetime('End Date', required=True)
     tz = fields.Selection(
         _tz_get, string='Timezone', default=lambda self: self._context.get('tz', self.env.user.tz or 'UTC'),
-        help="Timezone used when encoding the leave. It is used to correctly"
+        help="Timezone used when encoding the leave. It is used to correctly "
              "localize leave hours when computing time intervals.")
     resource_id = fields.Many2one(
         "resource.resource", 'Resource',

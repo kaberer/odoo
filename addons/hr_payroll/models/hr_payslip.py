@@ -102,6 +102,7 @@ class HrPayslip(models.Model):
     def refund_sheet(self):
         for payslip in self:
             copied_payslip = payslip.copy({'credit_note': True, 'name': _('Refund: ') + payslip.name})
+            copied_payslip.compute_sheet()
             copied_payslip.action_payslip_done()
         formview_ref = self.env.ref('hr_payroll.view_hr_payslip_form', False)
         treeview_ref = self.env.ref('hr_payroll.view_hr_payslip_tree', False)
@@ -311,7 +312,10 @@ class HrPayslip(models.Model):
         baselocaldict = {'categories': categories, 'rules': rules, 'payslip': payslips, 'worked_days': worked_days, 'inputs': inputs}
         #get the ids of the structures on the contracts and their parent id as well
         contracts = self.env['hr.contract'].browse(contract_ids)
-        structure_ids = contracts.get_all_structures()
+        if len(contracts) == 1 and payslip.struct_id:
+            structure_ids = list(set(payslip.struct_id._get_parent_structure().ids))
+        else:
+            structure_ids = contracts.get_all_structures()
         #get the rules of the structure and thier children
         rule_ids = self.env['hr.payroll.structure'].browse(structure_ids).get_all_rules()
         #run the rules by sequence

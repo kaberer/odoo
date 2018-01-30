@@ -144,7 +144,7 @@ msgstr "Virksomhed"
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_res_config_settings_resource_calendar_id
 msgid "Company Working Hours"
-msgstr ""
+msgstr "Virksomhedens arbejdstimer"
 
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_hr_department_complete_name
@@ -628,7 +628,7 @@ msgstr "Privatadresse"
 #. module: hr
 #: model:ir.ui.view,arch_db:hr.view_employee_form
 msgid "Private Information"
-msgstr "Privat Information"
+msgstr "Privat information"
 
 #. module: hr
 #: model:ir.ui.view,arch_db:hr.view_hr_job_form
@@ -699,17 +699,17 @@ msgstr "Opsætning"
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_res_config_settings_module_hr_org_chart
 msgid "Show Organizational Chart"
-msgstr "Vis Organisationsdiagram"
+msgstr "Vis organisationsdiagram"
 
 #. module: hr
 #: model:ir.ui.view,arch_db:hr.res_config_settings_view_form
 msgid "Show organizational chart on employee form"
-msgstr ""
+msgstr "Vis organisationsdiagram på medarbejderformular"
 
 #. module: hr
 #: model:ir.ui.view,arch_db:hr.res_config_settings_view_form
 msgid "Show organizational chart on employee form."
-msgstr ""
+msgstr "Vis organisationsdiagram på medarbejderformular."
 
 #. module: hr
 #: selection:hr.employee,marital:0
